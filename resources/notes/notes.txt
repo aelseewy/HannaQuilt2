@@ -1,0 +1,30 @@
+item
+	title 
+	date-time 
+	Ad-ID
+	Images
+	Price
+	Item-type -- Category
+
+	description
+
+
+
+owner:
+	phone
+	city
+
+Porfolio (product)
+
+
+Contact 
+
+
+
+	
+functions:
+0	post ad
+	filter
+	search
+	login 
+	register
