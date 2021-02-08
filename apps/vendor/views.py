@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from .models import Vendor
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
+from apps.product.models import Product, Category
+from .forms import ProductForm
+from django.utils.text import slugify
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def become_vendor(request):
@@ -48,10 +52,30 @@ def become_vendor(request):
 @login_required
 def vendor_admin(request):
     vendor = request.user.vendor
-    
+    products = vendor.products.all()
+
     template = 'vendor/vendor_admin.html'
     
     context = {
         'vendor' : vendor,
+        'products' : products,
     }
     return render(request, template, context)    
+
+@login_required
+def add_product(request):
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.vendor = request.user.vendor
+            product.slug = slugify(product.title)
+            product.save()
+
+            return redirect('vendor_admin')
+    else:
+        form = ProductForm()
+    
+    return render(request, 'vendor/add_product.html', {'form': form})

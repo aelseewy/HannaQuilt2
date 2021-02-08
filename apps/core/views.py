@@ -1,11 +1,17 @@
 from django.shortcuts import render
+from apps.product.models import Product
 
 # Create your views here.
 def frontpage(request):
+    newest_products = Product.objects.all()[0:4]
 
     template = 'core/frontpage.html'
 
-    return render(request, template)
+    context = {
+        'newest_products' : newest_products,
+    }
+
+    return render(request, template, context)
 
 def about(request):
     
