@@ -22,6 +22,7 @@
                 <div class="col-sm-4 col-sm-offset-4">
                     <div class="border-card">
                         <h3 class="font300 mb0 text-center">Create an account. It's Free!</h3> <hr>
+                    </div>
                    {% include 'includes/messages.html' %}
                    <form action="{% url 'become_vendor' %}" method="POST">
                         {% csrf_token %}
@@ -57,5 +58,17 @@
             </div>
         </div>
     </section>
+    <section>
+    <div class="container mb70">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                 <div class="border-card">
+                    <h3 class="font300 mb0 text-center">Already have an account? <a href="{% url 'login' %}" class="thembo"> Login here</a></h3> <hr>
 
+                 </div>
+            </div>
+        </div>
+    </div>
+    
+    </section>
 {% endblock content%}

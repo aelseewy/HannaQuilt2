@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{% url 'frontpage' %}">
                     	<h1><img src="{% static 'images/logo.png' %}" alt="logo"></h1>
                     </a>
                     
@@ -65,11 +65,19 @@
 
                         >
                         <a href="{% url 'frontpage' %}">Portfolio</a></li>
-                        {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'vendor_admin' %} ">Dashboard</a></li>
+
+                        <li
+                        {% if 'contact' in request.path %}
+                            class="active"
                         {% else %}
-                            <li><a href="{% url 'become_vendor' %} ">Register</a></li>
+                            class=""
                         {% endif %}
+
+                        >
+                        <a href="{% url 'contact' %}">Contact</a></li>
+                        
+                        
+                        
                     </ul>
                 </div>
                 <div class="search">

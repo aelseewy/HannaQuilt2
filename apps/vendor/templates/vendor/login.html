@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block title %}Login | {% endblock title %}
+
+{% block content %}
+<div class="page-bread mb70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Sign In</h3>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mb70">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <div class="border-card">
+                        <h3 class="font300 mb0 text-center">Login to your account</h3> <hr>
+                          {% include 'includes/messages.html' %}
+                          <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            <div class='form-group-icon mb15'>
+                                <i class='fa fa-envelope'></i>
+                                <input type="text" class='form-control' name="username" placeholder="Username">
+                            </div>
+                            <div class='form-group-icon mb15'>
+                                <i class='fa fa-lock'></i>
+                                <input type="password" class='form-control' name="password" placeholder="Password">
+                            </div>
+                            <input type="submit" value="Login" class='btn btn-default btn-lg btn-block'>
+                        </form>
+                        <hr>
+                        <div class='text-center'>Or</div>
+                        <div class='buttons-login'>
+                            <a href='#' class='btn btn-facebook btn-social btn-block'><i class='fa fa-facebook'></i> Login with facebook</a>
+                            <a href='#' class='btn btn-twitter btn-social btn-block'><i class='fa fa-twitter'></i> Login with facebook</a>
+                            <a href='#' class='btn btn-gplus btn-social btn-block'><i class='fa fa-google-plus'></i> Login with facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+{% endblock %}

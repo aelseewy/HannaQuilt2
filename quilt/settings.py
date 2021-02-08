@@ -26,7 +26,9 @@ SECRET_KEY = '%#fhtgfhy$xlvde1vxi2@26k=@ph7$i&$8%)54stj*xijq49nt'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'vendor_admin'
+LOGOUT_REDIRECT_URL = 'frontpage'
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.core',
     'apps.vendor',
+    'apps.product',
 ]
 
 MIDDLEWARE = [
