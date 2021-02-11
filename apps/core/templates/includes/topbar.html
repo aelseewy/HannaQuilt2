@@ -1,0 +1,33 @@
+	<header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                          {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'vendor_admin' %}" class="sign-in"><i class="fa fa-tachometer"></i> Dashboard</a>
+                            </li>
+
+                            <li>
+                                <a href="javascript:{document.getElementById('logout').submit()}" class="sign-in"><i class="fa fa-sign-out"></i> Logout</a>
+                                <form action="{% url 'logout' %}" id="logout" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden">
+                                </form>
+                            </li>
+                            {% else %}
+                                <li>
+                                    <a href="{% url 'login' %}" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'become_vendor' %}" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                                </li>
+                            {% endif %}
+                            <li><a href="https://www.facebook.com/quiltinegypt"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/ha12mb/"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+             </div>
+        </div>

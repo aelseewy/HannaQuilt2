@@ -1,0 +1,52 @@
+{% extends 'core/base2.html' %}
+
+{% load static %}
+{% block title %} Welcome |  {% endblock %}
+{% block content %}
+    <section id="home-slider">
+        <div class="container">
+            <div class="row">
+                <div class="main-slider">
+                    <div class="slide-text">
+                        <h1>We Are Creative Nerds</h1>
+                        <p>You can find what you need, to decorate your house with our fine Quilt products, or Crochet. </p>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'vendor_admin' %}" class="btn btn-common">Dashboard</a></li>
+                        {% else %}
+                            <li><a href="{% url 'become_vendor' %}" class="btn btn-common">SIGN UP</a></li>
+                        {% endif %}
+                        
+                    </div>
+                    <img src="{% static 'images/home/slider/hill.png' %}" class="slider-hill" alt="slider image">
+                    <img src="{% static 'images/home/slider/house.png' %}" class="slider-house" alt="slider image">
+                    <img src="{% static 'images/home/slider/sun.png' %}" class="slider-sun" alt="slider image">
+                    <img src="{% static 'images/home/slider/birds1.png' %}" class="slider-birds1" alt="slider image">
+                    <img src="{% static 'images/home/slider/birds2.png' %}" class="slider-birds2" alt="slider image">
+                </div>
+            </div>
+        </div>
+        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
+    </section>
+    <!--/#home-slider-->
+    <hr>
+    <br>
+    <section id="features">
+    <div class="background-white full-width"> 
+                {% for product in newest_products %}
+                    <div class="s-12 m-6 l-five">
+                        <a class="image-with-hover-overlay image-hover-zoom" href="{% url 'product' product.category.slug product.slug %}" title="Portfolio Image">
+                            <div class="image-hover-overlay background-primary"> 
+                            <div class="image-hover-overlay-content text-center padding-2x">
+                                <h3 class="text-white text-size-20 margin-bottom-10">{{product.title}}</h3>
+                                <p class="text-white text-size-14 margin-bottom-20">{{product.description}}</p>  
+                            </div> 
+                            </div> 
+                            <img class="full-img" src="{{product.get_thumbnail}}" alt=""/>
+                        </a>	
+                    </div>
+                {% endfor %}
+    </div>
+    </section>
+     <!--/#features-->
+<hr>
+{% endblock content %}

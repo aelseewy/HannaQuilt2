@@ -1,0 +1,86 @@
+{% extends 'core/base2.html' %}
+
+{% load static %}
+
+{% block title %} Products | {% endblock title %}
+
+{% block content %}
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Portfolio</h1>
+                            <p>Be Creative</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+
+    <section id="portfolio-information" class="padding-top">
+        <div class="container">
+            <div class="row">
+                {% if product.image %}
+                    <div class="col-sm-6">
+                        <img src="{{product.image.url}}" class="img-responsive" alt="">
+                    </div>
+                {% endif %}
+                <div class="col-sm-6">
+                    <div class="project-name overflow">
+                        <h2 class="bold">{{product.title}} </h2>
+                        <ul class="nav navbar-nav navbar-default">
+                            <li><a href="#"><i class="fa fa-clock-o"></i>{{product.date_added}}</a></li>
+                            <li><a href="#"><i class="fa fa-tag"></i>{{product.category}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="project-info overflow">
+                        <h3>Project Info</h3>
+                        <p>{{product.description}}</p>
+                    </div>
+
+                    <div class="client overflow">
+                        <h3>Client:</h3>
+                        <ul class="nav navbar-nav navbar-default">
+                            <li><a href="{{product.vendor.image}}"><i class="fa fa-bolt"></i>{{product.vendor.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!--/#portfolio-information-->
+
+    <section id="related-work" class="padding-top padding-bottom">
+       {% if similar_products %}
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center">Related Work</h1>
+                {% for product in similar_products %}
+                    <div class="col-sm-3">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="{{product.image.url}}" class="img-responsive" alt="">
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="{{ product.get_thumbnail }}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info ">
+                                <h2>{{ product.title}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+       {% endif %}
+    </section>
+    <!--/#related-work-->
+{% endblock %}
