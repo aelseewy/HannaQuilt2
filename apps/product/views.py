@@ -1,10 +1,26 @@
 import random
 from django.shortcuts import render, get_object_or_404
 
-from .models import Category, Product
+from .models import Category, Product, Photo
 
 
 # Create your views here.
+def gallery(request):
+    category = request.GET.get('category')
+    if category == None:
+        photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(category__title=category)
+
+    categories = Category.objects.all()
+    context = {'categories': categories, 'photos': photos}
+    return render(request, 'product/gallery.html', context)
+
+
+def viewPhoto(request, pk):
+    photo = Photo.objects.get(id=pk)
+    return render(request, 'product/photo.html', {'photo': photo})
+
 def product(request, category_slug, product_slug):
     product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
     

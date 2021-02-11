@@ -81,3 +81,12 @@ class Product(models.Model):
         thumbnail = File(thumb_io, name=image.name)
 
         return thumbnail
+class Photo(models.Model):
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True)
+    
+    image = models.ImageField(null=False, blank=False)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.description

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.vendor',
     'apps.product',
-    'apps.photos',
+    
     'widget_tweaks',
 
 ]

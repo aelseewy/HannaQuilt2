@@ -60,13 +60,13 @@
 							</li>
 							<li class="nav-item">
 								<a
-                                {% if 'category' == request.path %}
+                                {% if 'gallery' == request.path %}
                                     class="nav-link active"
                                 {% else %}
                                     class="nav-link"
                                 {% endif %}
-                                href="{% url 'frontpage' %}">
-                                Category
+                                href="{% url 'gallery' %}">
+                                Gallery
                                 </a>
 							</li>
 
