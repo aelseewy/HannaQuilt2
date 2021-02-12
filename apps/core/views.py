@@ -21,11 +21,6 @@ def about(request):
 
     return render(request, template)
 
-def service(request):
-    
-    template = 'core/service.html'
-
-    return render(request, template)
 
 def contact(request):
     

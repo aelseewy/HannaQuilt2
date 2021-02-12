@@ -8,9 +8,9 @@ from .models import Category, Product, Photo
 def gallery(request):
     category = request.GET.get('category')
     if category == None:
-        photos = Photo.objects.all()
+        photos = Product.objects.all()
     else:
-        photos = Photo.objects.filter(category__title=category)
+        photos = Product.objects.filter(category__title=category)
 
     categories = Category.objects.all()
     context = {'categories': categories, 'photos': photos}
@@ -18,12 +18,12 @@ def gallery(request):
 
 
 def viewPhoto(request, pk):
-    photo = Photo.objects.get(id=pk)
-    return render(request, 'product/photo.html', {'photo': photo})
+    photo = Product.objects.get(id=pk)
+    return render(request, 'product/photos.html', {'photo': photo})
 
 def product(request, category_slug, product_slug):
     product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
-    
+    photo = Product.objects.get(category__slug=category_slug, slug=product_slug)
 
     similar_products = list(product.category.products.exclude(id=product.id))
 
@@ -33,7 +33,7 @@ def product(request, category_slug, product_slug):
 
     context = {
         'product': product, 
-        
+        'photo': photo,
         'similar_products': similar_products, 
     }
     

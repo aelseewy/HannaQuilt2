@@ -8,7 +8,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <img src="images/logo-footer.png" alt="">
+          <img src="{% static 'images/logo-footer.png' %}" alt="">
           <!-- description -->
           <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -33,11 +33,10 @@
         <div class="block">
           <h4>Admin Pages</h4>
           <ul>
-            <li><a href="category.html">Category</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
             <li><a href="{% url 'about' %}">About Us</a></li>
-            <li><a href="{% url 'service' %}">Services</a>
-            </li>
+            
             <li><a href="blog.html">Blog</a></li>
 
 
