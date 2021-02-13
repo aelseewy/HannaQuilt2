@@ -19,7 +19,7 @@
 						<h2>Popular Category</h2>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-bed"></i> Bed_Covers</a></li>
+								<a href="{% url 'gallery' %}"><i class="fa fa-bed"></i> Bed_Covers</a></li>
 							<li class="list-inline-item">
 								<a href="category.html"><i class="fa fa-grav"></i> Pillows</a>
 							</li>
@@ -40,7 +40,7 @@
 				<div class="advance-search">
 						<div class="container">
 							<div class="row justify-content-center">
-								<div class="col-lg-12 col-md-12 align-content-center">
+								<div class="offset-md-4">
 										<form method="get" action="{% url 'search' %}">
 											<div class="form-row">
 												<div class="form-group col-md-4">
