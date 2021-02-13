@@ -85,7 +85,7 @@
                 <td class="product-thumb">
                   <img width="80px" height="auto" src="{{product.get_thumbnail}}" alt="image description"></td>
                 <td class="product-details">
-                  <h3 class="title">{{product.title}}</h3>
+                  <h3 class="title"><a href="{% url 'product' product.category.slug product.slug %}">{{product.title}}</a></h3>
                   <span class="add-id"><strong>Ad ID:</strong> {{ product.id }}</span>
                   <span><strong>Posted on: </strong><time>{{product.date_added}}</time> </span>
                   <span class="status active"><strong>Quantity</strong>{{product.quantity}}</span>
@@ -96,7 +96,7 @@
                   <div class="">
                     <ul class="list-inline justify-content-center">
                       <li class="list-inline-item">
-                        <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="category.html">
+                        <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="{% url 'category' product.category.slug %}">
                           <i class="fa fa-eye"></i>
                         </a>
                       </li>
@@ -162,7 +162,7 @@
 					grow your business</h2>
 					<ul class="list-inline mt-30">
 						<li class="list-inline-item"><a class="btn btn-main" href="{% url 'add_product' %}">Add Listing</a></li>
-						<li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-secondary" href="{% url 'gallery' %}">Browser Listing</a></li>
 					</ul>
 				</div>
 			</div>

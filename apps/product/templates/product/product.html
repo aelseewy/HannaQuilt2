@@ -56,13 +56,13 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if product.image %}
-							<div class="product-slider-item my-4" data-image="{{product.image.url}}">
-								<img class="img-fluid w-100" src="{{product.image.url}}" alt="product-img">
+							<div class="product-slider-item my-4" data-image="{{product.get_thumbnail}}">
+								<img class="img-fluid w-100" src="{{product.get_thumbnail}}" alt="product-img">
 							</div>
 						{% endif %}
 						{% if product.image_two %}
-							<div class="product-slider-item my-4" data-image="{{product.image_two.url}}">
-								<img class="d-block img-fluid w-100" src="{{product.image_two.url}}" alt="Second slide">
+							<div class="product-slider-item my-4" data-image="{{product.get_thumbnail}}">
+								<img class="d-block img-fluid w-100" src="{{product.get_thumbnail}}" alt="Second slide">
 							</div>
 						{% endif %}
 						{% if product.image_three %}
@@ -146,15 +146,14 @@
 												</ul>
 											</div>
 											<div class="name">
-												<h5>Jessica Brown</h5>
+												<h5>{{product.vendor.name}}</h5>
 											</div>
 											<div class="date">
-												<p>Mar 20, 2018</p>
+												<p>{{product.date_added}}</p>
 											</div>
 											<div class="review-comment">
 												<p>
-													Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
-													riamipsa eaque.
+													Contact us for any inquiry
 												</p>
 											</div>
 										</div>
@@ -224,7 +223,7 @@
 							your fellow users.
 						</p>
 						<!-- Submii button -->
-						<a href="" class="btn btn-transparent-white">Submit Listing</a>
+						<a href="{% url 'add_product' %}" class="btn btn-transparent-white">Submit Listing</a>
 					</div>
 
 				</div>
