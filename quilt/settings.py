@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.vendor',
     'apps.product',
-    
+    'apps.contact',
     'widget_tweaks',
 
 ]
@@ -144,3 +144,10 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# Email sending
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'quiltinegypt@gmail.com'
+EMAIL_HOST_PASSWORD = 'zzcucrhusiwnufhw'
+EMAIL_USE_TLS = True

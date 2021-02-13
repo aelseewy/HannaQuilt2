@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
 from apps.product.models import Product, Category
-
+from django.contrib.auth.models import User
+from django.contrib import messages
+from apps.contact.models import Contact
 # Create your views here.
 def frontpage(request):
     newest_products = Product.objects.all()[0:10]
@@ -22,8 +25,3 @@ def about(request):
     return render(request, template)
 
 
-def contact(request):
-    
-    template = 'core/contact.html'
-
-    return render(request, template)
