@@ -38,6 +38,7 @@ def product(request, category_slug, product_slug):
 
     if len(similar_products) >= 4:
         similar_products = random.sample(similar_products, 4)
+   
     template = 'product/product.html'
 
     context = {
@@ -57,3 +58,4 @@ def category(request, category_slug):
         'category' : category,
     }
     return render(request, template, context)
+

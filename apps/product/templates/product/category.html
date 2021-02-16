@@ -56,7 +56,8 @@
                                         <div class="thumb-content">
                                             <!-- <div class="price">$200</div> -->
                                             <a href="{% url 'product' product.category.slug product.slug %}">
-                                                <img class="card-img-top img-fluid" src="{{product.get_thumbnail}}" alt="Card image cap">
+                                                <img class="card-img-top img-fluid" src="{{ product.image.url}}" alt="Card image cap" style="min-height: 262px; max-height: 262px;">
+												
                                             </a>
                                         </div>
                                         <div class="card-body">

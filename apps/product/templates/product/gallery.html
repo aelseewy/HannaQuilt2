@@ -55,7 +55,7 @@
                                         <div class="thumb-content">
                                             <!-- <div class="price">$200</div> -->
                                             <a href="{% url 'photo' photo.id %}">
-                                                <img class="card-img-top img-fluid" src="{{photo.get_thumbnail}}" alt="Card image cap">
+                                                <img class="card-img-top img-fluid" src="{{photo.image.url}}" alt="Card image cap" style="min-height: 262px; max-height: 262px;">
                                             </a>
                                         </div>
                                         <div class="card-body">
