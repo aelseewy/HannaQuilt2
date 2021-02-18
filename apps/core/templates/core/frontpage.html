@@ -6,7 +6,7 @@
 <!--===============================
 =            Hero Area            =
 ================================-->
-<body class="body-wrapper">
+
 <section class="hero-area bg-1 text-center overly">
 	<!-- Container Start -->
 	<div class="container">
@@ -93,7 +93,7 @@
                                 <div class="thumb-content">
                                     <!-- <div class="price">$200</div> -->
                                     <a href="{% url 'product' product.category.slug product.slug %}">
-                                        <img class="card-img-top img-fluid" src="{{product.image.url}}" alt="Card image cap"style="min-height: 262px; max-height: 262px;" >
+                                        <img class="card-img-top img-fluid" src="{{product.thumbnail.url}}" alt="Card image cap" style="min-height: 262px; max-height: 262px;" >
                                     </a>
                                 </div>
                                 <div class="card-body">

@@ -43,8 +43,8 @@ def contact(request):
         
         
         send_mail(
-                'New Quilt Inquiry',
-                'You have a new inquiry for the quilt ' + quilt_title + '. Please login to your admin panel for more info.' + message,
+                'New Quilt Contact',
+                'You have a new contact message for the quilt ' + quilt_title + '. Please login to your admin panel for more info.  ' + message, 
                 'quiltinegypt@gmail.com',
                 [email],
                 fail_silently=False,

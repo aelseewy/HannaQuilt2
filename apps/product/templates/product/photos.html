@@ -56,13 +56,23 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if photo.image %}
-							<div class="product-slider-item my-4" data-image="{{photo.get_thumbnail}}">
+							<div class="product-slider-item my-4" data-image="{{photo.image.url}}">
 								<img class="img-fluid w-100" src="{{photo.image.url}}" alt="product-img">
 							</div>
 						{% endif %}
 						{% if photo.image_two %}
-							<div class="product-slider-item my-4" data-image="{{photo.get_thumbnail}}">
+							<div class="product-slider-item my-4" data-image="{{photo.image_two.url}}">
 								<img class="d-block img-fluid w-100" src="{{photo.image_two.url}}" alt="Second slide">
+							</div>
+						{% endif %}
+						{% if photo.image_two %}
+							<div class="product-slider-item my-4" data-image="{{photo.image_two.url}}">
+								<img class="d-block img-fluid w-100" src="{{photo.image_two.url}}" alt="Third slide">
+							</div>
+						{% endif %}
+						{% if photo.image_three %}
+							<div class="product-slider-item my-4" data-image="{{photo.image_three.url}}">
+								<img class="d-block img-fluid w-100" src="{{photo.image_three.url}}" alt="Third slide">
 							</div>
 						{% endif %}
 						{% if photo.image_three %}
@@ -121,65 +131,72 @@
 							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 								<h3 class="tab-title">Product Review</h3>
 								<div class="product-review">
-									<div class="media">
-										<!-- Avater -->
-										<img src="{% static 'images/user/user-thumb.jpg' %}" alt="avater">
-										<div class="media-body">
-											<!-- Ratings -->
-											<div class="ratings">
-												<ul class="list-inline">
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-													<li class="list-inline-item">
-														<i class="fa fa-star"></i>
-													</li>
-												</ul>
+									{% for review in photo.reviews.all %}
+											<div class="media">
+												<!-- Avater -->
+												<img src="{% static 'images/user/user-thumb.jpg' %}" alt="avater">
+												<div class="media-body">
+													<!-- Ratings -->
+													<div class="ratings">
+														<ul class="list-inline">
+															
+																<li class="list-inline-item">
+																	{{review.stars}} <i class="fa fa-star"></i>
+																</li>
+															
+														</ul>
+													</div>
+													<div class="name">
+														<h5>{{ review.name }}</h5>
+													</div>
+													<div class="date">
+														<p>{{ review.date_added|date:"Y-m-d" }}</p>
+													</div>
+													<div class="review-comment">
+														<p>
+															{{review.content}}
+														</p>
+													</div>
+												</div>
 											</div>
-											<div class="name">
-												<h5>{{photo.category.name}}</h5>
-											</div>
-											<div class="date">
-												<p>{{photo.date_added}}</p>
-											</div>
-											<div class="review-comment">
-												<p>
-													Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
-													riamipsa eaque.
-												</p>
-											</div>
-										</div>
-									</div>
+									{% empty %}
+													<div class="review-comment">
+														<p>
+															SIGN IN 
+														</p>
+													</div>
+									{% endfor %}
+
 									<div class="review-submission">
 										<h3 class="tab-title">Submit your review</h3>
 										<!-- Rate -->
-										<div class="rate">
-											<div class="starrr"></div>
-										</div>
+
 										<div class="review-submit">
-											<form action="#" class="row">
+											{% if request.user.is_authenticated %}
+											<form method="post" action=".">
+											{% csrf_token %}
 												<div class="col-lg-6">
-													<input type="text" name="name" id="name" class="form-control" placeholder="Name">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Name"
+													value="{{user.first_name}} {{user.last_name}}">
 												</div>
 												<div class="col-lg-6">
-													<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+													<select name="stars" id="stars" class="form-control" >
+														<option value="1">1</option>
+                                    					<option value="2">2</option>
+                                    					<option value="3" selected>3</option>
+                                    					<option value="4">4</option>
+                                    					<option value="5">5</option>
+                                					</select>
+
 												</div>
 												<div class="col-12">
-													<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
+													<textarea name="content" id="content" rows="10" class="form-control" placeholder="Message"></textarea>
 												</div>
 												<div class="col-12">
 													<button type="submit" class="btn btn-main">Sumbit</button>
 												</div>
 											</form>
+											{% endif %}
 										</div>
 									</div>
 								</div>

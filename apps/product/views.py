@@ -1,9 +1,9 @@
 import random
 from django.db.models import Q
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 
-from .models import Category, Product, Photo
+from .models import Category, Product, Photo, ProductReview
 
 
 # Create your views here.
@@ -28,11 +28,38 @@ def gallery(request):
 
 def viewPhoto(request, pk):
     photo = Product.objects.get(id=pk)
+
+    # Add review
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        stars = request.POST.get('stars', '' )
+        content = request.POST.get('content', '')
+        name= request.POST.get('name', '')
+
+        review = ProductReview.objects.create(photo=photo, user=request.user, stars=stars, content=content, name=name)
+
+        return redirect('photo', pk=pk )
+
+    #
+
     return render(request, 'product/photos.html', {'photo': photo})
 
 def product(request, category_slug, product_slug):
     product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
     photo = Product.objects.get(category__slug=category_slug, slug=product_slug)
+
+    # Add review
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        stars = request.POST.get('stars', '' )
+        content = request.POST.get('content', '')
+        name= request.POST.get('name', '')
+
+        review = ProductReview.objects.create(product=product, user=request.user, stars=stars, content=content, name=name)
+
+        return redirect('product', category_slug=category_slug, product_slug=product_slug)
+
+    #
 
     similar_products = list(product.category.products.exclude(id=product.id))
 

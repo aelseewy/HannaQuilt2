@@ -60,7 +60,7 @@ def vendor_admin(request):
         'vendor' : vendor,
         'products' : products,
     }
-    return render(request, template, context)    
+    return render(request, template, context)
 
 @login_required
 def add_product(request):

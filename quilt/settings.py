@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'apps.vendor',
     'apps.product',
     'apps.contact',
-    'stdimage',
-    'thumbnail_works',
+    
+    
     'widget_tweaks',
 
 ]
