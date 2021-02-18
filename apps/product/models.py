@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from apps.vendor.models import Vendor
 
+
 # Create your models here.
 class Category(models.Model):
     ## for product category

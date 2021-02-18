@@ -109,11 +109,9 @@
                                     <p class="card-text">{{product.brief_description}}</p>
                                     <div class="product-ratings">
                                         <ul class="list-inline">
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+
+                                            <h4>Stars: {% if product.get_rating == 0 %}No ratings yet{% else %}{{ product.get_rating|floatformat:1 }}{% endif %}<li class="list-inline-item selected"> <i class="fa fa-star"></i></li></h4>
+
                                         </ul>
                                     </div>
                                 </div>

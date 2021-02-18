@@ -2,7 +2,7 @@ import random
 from django.db.models import Q
 
 from django.shortcuts import render, get_object_or_404,redirect
-
+from django.core.paginator import   EmptyPage, PageNotAnInteger, Paginator
 from .models import Category, Product, Photo, ProductReview
 
 
@@ -16,13 +16,18 @@ def search(request):
 
 def gallery(request):
     category = request.GET.get('category')
+
     if category == None:
         photos = Product.objects.all()
     else:
         photos = Product.objects.filter(category__title=category)
 
     categories = Category.objects.all()
-    context = {'categories': categories, 'photos': photos}
+    paginator = Paginator(photos, 3)
+    page = request.GET.get('page')
+    paged_photos = paginator.get_page(page)
+
+    context = {'categories': categories, 'photos': paged_photos}
     return render(request, 'product/gallery.html', context)
 
 
@@ -36,7 +41,7 @@ def viewPhoto(request, pk):
         content = request.POST.get('content', '')
         name= request.POST.get('name', '')
 
-        review = ProductReview.objects.create(photo=photo, user=request.user, stars=stars, content=content, name=name)
+        review = ProductReview.objects.create(product=photo, user=request.user, stars=stars, content=content, name=name)
 
         return redirect('photo', pk=pk )
 
@@ -47,6 +52,7 @@ def viewPhoto(request, pk):
 def product(request, category_slug, product_slug):
     product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
     photo = Product.objects.get(category__slug=category_slug, slug=product_slug)
+    
 
     # Add review
 
