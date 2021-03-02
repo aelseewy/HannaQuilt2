@@ -13,12 +13,14 @@ def inquiry(request):
         user_id = request.POST['user_id']
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
+        customer_need = request.POST['customer_need']
         city = request.POST['city']
         district = request.POST['district']
         email = request.POST['email']
         phone = request.POST['phone']
         message = request.POST['message']
-
+        owner_mail = request.POST['owner_mail']
+        owner_id = request.POST['owner_id']
 
         if request.user.is_authenticated:
             
@@ -29,7 +31,7 @@ def inquiry(request):
                 return redirect('/photo/'+quilt_id)
 
         contact = Contact(quilt_id=quilt_id, quilt_title=quilt_title, user_id=user_id,
-        first_name=first_name, last_name=last_name, email=email,city=city, district=district, phone=phone, message=message)
+        first_name=first_name, last_name=last_name, customer_need=customer_need, email=email,city=city, district=district, phone=phone, message=message, owner_id=owner_id)
         contact.save()
         
         

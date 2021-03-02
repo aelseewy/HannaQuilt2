@@ -65,13 +65,13 @@
                                                     <a href="{% url 'photo' photo.id %}"><i class="fa fa-folder-open-o"></i>{{photo.category.title}}</a>
                                                 </li>
                                                 <li class="list-inline-item">
-                                                    <a href="#"><i class="fa fa-calendar"></i>{{ product.vendor.name }}</a>
+                                                    <a href="#"><i class="fa fa-calendar"></i>{{ photo.vendor.name }}</a>
                                                 </li>
                                             </ul>
-                                            <p class="card-text">{{product.brief_description}}
+                                            <p class="card-text">{{photo.brief_description}}
                                             <div class="product-ratings">
                                                 <ul class="list-inline">
-                                            		<h4>Stars: {% if product.get_rating == 0 %}No ratings yet{% else %}{{ product.get_rating|floatformat:1 }}{% endif %}<li class="list-inline-item selected"> <i class="fa fa-star"></i></li></h4>
+                                            		<h4>Stars: {% if photo.get_rating == 0 %}No ratings yet{% else %}{{ product.get_rating|floatformat:1 }}{% endif %}<li class="list-inline-item selected"> <i class="fa fa-star"></i></li></h4>
                                                 </ul>
                                             </div>
                                         </div>

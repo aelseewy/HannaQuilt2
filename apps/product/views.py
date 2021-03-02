@@ -23,7 +23,7 @@ def gallery(request):
         photos = Product.objects.filter(category__title=category)
 
     categories = Category.objects.all()
-    paginator = Paginator(photos, 3)
+    paginator = Paginator(photos, 6)
     page = request.GET.get('page')
     paged_photos = paginator.get_page(page)
 

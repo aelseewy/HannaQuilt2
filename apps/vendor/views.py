@@ -8,7 +8,8 @@ from apps.product.models import Product, Category
 from .forms import ProductForm
 from django.utils.text import slugify
 from django.contrib.auth.forms import UserCreationForm
-
+from apps.contact.models import Contact
+from django.core.mail import send_mail
 # Create your views here.
 def become_vendor(request):
     if request.method == 'POST':
@@ -79,3 +80,31 @@ def add_product(request):
         form = ProductForm()
     
     return render(request, 'vendor/add_product.html', {'form': form})
+
+@login_required
+def myinquiries(request):
+    photo = Product.objects.get(id=request.user.id)
+    myinquiry = Contact.objects.all().filter(user_id=request.user.id)
+    context = {
+        'myinquiries': myinquiry,
+        'photo': photo,
+    }
+    return render(request, 'vendor/inquirieslist.html', context)
+
+@login_required
+def send_reply(request):
+    if request.method =="POST":
+        email = request.POST['email']
+        message = request.POST['message']
+        quilt_title = request.POST['quilt_title']
+        send_mail(
+            'Reply from ' + quilt_title + ' owner',
+            message,
+            'sewemallonline@gmail.com',
+            [email],
+            fail_silently=False
+        )
+        messages.success(request, 'Your reply has been sent successfully')
+        return redirect('myinquiries')
+    else:
+        return redirect('vendor_admin')

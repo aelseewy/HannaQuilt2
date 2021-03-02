@@ -44,7 +44,7 @@
 			<!-- Left sidebar -->
 			<div class="col-md-8">
 				<div class="product-details">
-					<h1 class="product-title">{{photo.category.title}}</h1>
+					<h1 class="product-title">{{photo.title}}</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">{{photo.vendor.name}}</a></li>
@@ -270,7 +270,9 @@
 										{% else %}
 											<input type="hidden" name="user_id" value="0">
 										{% endif %}
-
+										<input type="hidden" name="owner_mail" value="{{photo.vendor.email}}">
+										<input type="hidden" name="listing_id" value="{{photo.id}}">
+										<input type="hidden" name="owner_id" value="{{photo.vendor.id}}">
 										<input type="hidden" name="quilt_id" value="{{photo.id}}">
 											<div class="form-group">
 											<label for="name" class="col-form-label">Hello, My Name is</label>

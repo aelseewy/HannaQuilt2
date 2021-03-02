@@ -14,6 +14,7 @@ class Contact(models.Model):
     message = models.TextField(blank=True)
     user_id = models.IntegerField(blank=True)
     user_name = models.CharField(max_length=100)
+    owner_id = models.IntegerField(default=0,blank=True)
     date_added = models.DateTimeField(blank=True, default=datetime.now)
 
     def __str__(self):

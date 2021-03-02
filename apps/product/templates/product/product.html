@@ -163,9 +163,7 @@
 									<div class="review-submission">
 										<h3 class="tab-title">Submit your review</h3>
 										<!-- Rate -->
-										<div class="stars">
-											<div class="starrr"></div>
-										</div>
+
 										<div class="review-submit">
 											{% if request.user.is_authenticated %}
 											<form method="post" action=".">
@@ -211,7 +209,7 @@
 						<img class="rounded-circle img-fluid mb-5 px-5" src="{% static 'images/user/user-thumb.jpg' %}" alt="">
 						<h4><a href="">{{product.vendor.name}}</a></h4>
 						<p class="member-time">{{product.vendor.created_at}}</p>
-						<a href="">See all ads</a>
+						<a href="{% url 'vendor_admin' %}">See all ads</a>
 						<ul class="list-inline mt-20">
 							
         			        <li class="list-inline-item"><button class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3" data-toggle="modal" data-target="#inquiryModal">Send inquiry</button></li>
@@ -269,6 +267,9 @@
 										{% else %}
 											<input type="hidden" name="user_id" value="0">
 										{% endif %}
+										<input type="hidden" name="owner_mail" value="{{product.vendor.email}}">
+										<input type="hidden" name="quilt_id" value="{{product.id}}">
+										<input type="hidden" name="owner_id" value="{{product.owner.id}}">
 
 										<input type="hidden" name="quilt_id" value="{{product.id}}">
 											<div class="form-group">
