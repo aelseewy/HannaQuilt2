@@ -45,9 +45,6 @@ INSTALLED_APPS = [
     'apps.vendor',
     'apps.product',
     'apps.contact',
-    
-    
-    'widget_tweaks',
 
 ]
 
