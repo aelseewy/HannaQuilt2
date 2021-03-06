@@ -5,11 +5,13 @@ from .models import Vendor
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from apps.product.models import Product, Category
+from apps.vendor.models import Vendor
 from .forms import ProductForm
 from django.utils.text import slugify
 from django.contrib.auth.forms import UserCreationForm
 from apps.contact.models import Contact
 from django.core.mail import send_mail
+from django.core.paginator import   EmptyPage, PageNotAnInteger, Paginator
 # Create your views here.
 def become_vendor(request):
     if request.method == 'POST':
@@ -54,12 +56,17 @@ def become_vendor(request):
 def vendor_admin(request):
     vendor = request.user.vendor
     products = vendor.products.all()
+    productss = vendor.products.all()
+    paginator = Paginator(productss, 3)
+    page = request.GET.get('page')
+    paged_productss = paginator.get_page(page)    
 
     template = 'vendor/vendor_admin.html'
     
     context = {
         'vendor' : vendor,
         'products' : products,
+        'productss': paged_productss,
     }
     return render(request, template, context)
 
@@ -83,22 +90,42 @@ def add_product(request):
 
 @login_required
 def myinquiries(request):
-    photo = Product.objects.get(id=request.user.id)
+    vendor = request.user.vendor
     myinquiry = Contact.objects.all().filter(user_id=request.user.id)
+    paginator = Paginator(myinquiry, 3)
+    page = request.GET.get('page')
+    paged_myinquiry = paginator.get_page(page)    
+
     context = {
-        'myinquiries': myinquiry,
-        'photo': photo,
+        'vendor': vendor,
+        'myinquiries': paged_myinquiry,
+        
     }
     return render(request, 'vendor/inquirieslist.html', context)
+
+@login_required
+def inquiry1(request):
+    vendor = request.user.vendor
+    myinquiry = Contact.objects.all().filter(owner_id=request.user.vendor.id)
+    paginator = Paginator(myinquiry, 3)
+    page = request.GET.get('page')
+    paged_myinquiry = paginator.get_page(page)
+    
+    context = {
+        'vendor' : vendor,
+        'inquiries': paged_myinquiry,
+        
+    }
+    return render(request, 'vendor/dashboard_inquiries.html', context)
 
 @login_required
 def send_reply(request):
     if request.method =="POST":
         email = request.POST['email']
         message = request.POST['message']
-        quilt_title = request.POST['quilt_title']
+        quilt_listing = request.POST['quilt_listing']
         send_mail(
-            'Reply from ' + quilt_title + ' owner',
+            'Reply from ' + quilt_listing + ' owner',
             message,
             'sewemallonline@gmail.com',
             [email],

@@ -27,24 +27,21 @@ def about(request):
 
 def contact(request):
     if request.method == 'POST':
-        quilt_title = request.POST['quilt_title']
+        quilt_listing = request.POST['quilt_listing']
         user_id = request.POST['user_id']
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
         phone = request.POST['phone']
         message = request.POST['message']
+        
 
 
         if request.user.is_authenticated:
             user_id = request.user.id
-
-
-        
-        
         send_mail(
                 'New Quilt Contact',
-                'You have a new contact message for the quilt ' + quilt_title + '. Please login to your admin panel for more info.  ' + message, 
+                'You have a new contact message for the quilt ' + quilt_listing + message +'. Please login to your admin panel for more info.  ' + message, 
                 'quiltinegypt@gmail.com',
                 [email],
                 fail_silently=False,

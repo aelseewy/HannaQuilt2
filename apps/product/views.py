@@ -33,6 +33,7 @@ def gallery(request):
 
 def viewPhoto(request, pk):
     photo = Product.objects.get(id=pk)
+    
 
     # Add review
 
@@ -47,7 +48,7 @@ def viewPhoto(request, pk):
 
     #
 
-    return render(request, 'product/photos.html', {'photo': photo})
+    return render(request, 'product/photos.html', {'photo': photo,})
 
 def product(request, category_slug, product_slug):
     product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)

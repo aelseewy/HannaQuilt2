@@ -9,7 +9,7 @@ from apps.vendor.models import Vendor
 def inquiry(request):
     if request.method == 'POST':
         quilt_id = request.POST['quilt_id']
-        quilt_title = request.POST['quilt_title']
+        quilt_listing = request.POST['quilt_listing']
         user_id = request.POST['user_id']
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -19,28 +19,23 @@ def inquiry(request):
         email = request.POST['email']
         phone = request.POST['phone']
         message = request.POST['message']
-        owner_mail = request.POST['owner_mail']
         owner_id = request.POST['owner_id']
 
         if request.user.is_authenticated:
             
             user_id = request.user.id
+            
             has_contacted = Contact.objects.all().filter(quilt_id=quilt_id, user_id=user_id)
             if has_contacted:
                 messages.error(request, 'You have already made an inquiry about this item. Please wait until we get back to you.')
                 return redirect('/photo/'+quilt_id)
 
-        contact = Contact(quilt_id=quilt_id, quilt_title=quilt_title, user_id=user_id,
-        first_name=first_name, last_name=last_name, customer_need=customer_need, email=email,city=city, district=district, phone=phone, message=message, owner_id=owner_id)
+        contact = Contact(quilt_id=quilt_id, quilt_listing=quilt_listing, user_id=user_id, first_name=first_name, last_name=last_name, customer_need=customer_need, email=email,city=city, district=district, phone=phone, message=message, owner_id=owner_id)
         contact.save()
-        
-        
-        admin_info = User.objects.get(is_superuser=True)
-        admin_email = admin_info.email
-        
+
         send_mail(
                 'New Quilt Inquiry',
-                'You have a new inquiry for the quilt ' + quilt_title + ' ' + message + '. Please login to your admin panel for more info.',
+                'You have a new inquiry for the quilt ' + quilt_listing + ' ' + message + '. Please login to your admin panel for more info.',
                 'quiltinegypt@gmail.com',
                 [email],
                 fail_silently=False,

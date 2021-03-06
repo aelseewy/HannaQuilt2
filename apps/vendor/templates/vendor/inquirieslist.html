@@ -24,45 +24,13 @@
           <!-- Dashboard Links -->
           <div class="widget user-dashboard-menu">
             <ul>
-              <li class="active"><a href="{% url 'vendor_admin' %}"><i class="fa fa-user"></i> My Ads</a></li>
+              <li ><a href="{% url 'vendor_admin' %}"><i class="fa fa-user"></i> My Ads</a></li>
               <li><a href="{% url 'add_product' %}"><i class="fa fa-bookmark-o"></i> Add Product <span>5</span></a></li>
-              <li><a href="{% url 'myinquiries' %}"><i class="fa fa-file-archive-o"></i>my inquiries <span>12</span></a></li>
-              
-              
+              <li class="active"><a href="{% url 'myinquiries' %}"><i class="fa fa-file-archive-o"></i>my inquiries <span>12</span></a></li>
+              <li><a href="{% url 'inquiry1' %}"><i class="fa fa-file-archive-o"></i>my contacts </a></li>
               <li><a href="{% url 'logout' %}"><i class="fa fa-cog"></i> Logout</a></li>
-              <li><a href="" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Delete
-                  Account</a></li>
             </ul>
           </div>
-
-          <!-- delete-account modal -->
-          <!-- delete account popup modal start-->
-                <!-- Modal -->
-                <div class="modal fade" id="deleteaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header border-bottom-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <img src="{% static 'images/account/Account1.png' %}" class="img-fluid mb-2" alt="">
-                        <h6 class="py-2">Are you sure you want to delete your account?</h6>
-                        <p>Do you really want to delete these records? This process cannot be undone.</p>
-                        <textarea name="message" id="" cols="40" rows="4" class="w-100 rounded"></textarea>
-                      </div>
-                      <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- delete account popup modal end-->
-          <!-- delete-account modal -->
-
         </div>
       </div>
       <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
@@ -71,88 +39,50 @@
           
           <h3 class="widget-header">Welcome {{request.user.first_name}} {{request.user.last_name}}</h3>
           {% if myinquiries %}
-          <table class="table table-responsive product-dashboard-table">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Product Title</th>
-                <th class="text-center">quilt_title</th>
-                <th class="text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for inquiry in myinquiries %}
-              <tr>
+            <table class="table table-responsive product-dashboard-table">
+              <thead>
+                <tr>
 
-                <td class="product-thumb">
-                  <img width="80px" height="auto" src="{{photo.get_thumbnail}}" alt="image description"></td>
-                <td class="product-details">
-                  <h3 class="title"><a href="{% url 'photo' inquiry.quilt_id %}">{{inquiry.quilt_title}}</a></h3>
-                  <span class="add-id"><strong>Ad ID:</strong> {{ inquiry.quilt_id }}</span>
-                  <span><strong>Posted on: </strong><time>{{inquiry.date_added}}</time> </span>
-                  
-                </td>
-                <td class="product-category"><span class="categories">{{inquiry.quilt_title}}</span></td>
-                <td class="action" data-title="Action">
-                  <div class="">
-                    <ul class="list-inline justify-content-center">
-                      <li class="list-inline-item">
-                        <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="{% url 'photo' inquiry.quilt_id %}">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a class="reply" data-toggle="modal" data-target="#replyModal" data-placement="top" title="Reply" href="">
-                          <i class="fa fa-pencil"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="">
-                          <i class="fa fa-trash"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
-              </tr>
-              <div class="modal fade" id="replyModal" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="inquiryModalLabel">Replying to {{inquiry.first_name}}</h5>
-                      <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                      </button>
+                  <th>Product Title</th>
+                  <th class="text-center">quilt_title</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for inquiry in myinquiries %}
+                <tr>
+
+                  <td class="product-details">
+                    <h3 class="title"><a href="{% url 'photo' inquiry.quilt_id %}">{{inquiry.quilt_listing}}</a></h3>
+                    <span class="add-id"><strong>Ad ID:</strong> {{ inquiry.quilt_id }}</span>
+                    <span><strong>Posted on: </strong><time>{{inquiry.date_added}}</time> </span>
+                    
+                  </td>
+                  <td class="product-category"><span class="categories">{{inquiry.owner_id}}</span></td>
+                  <td class="action" data-title="Action">
+                    <div class="">
+                      <ul class="list-inline justify-content-center">
+                        <li class="list-inline-item">
+                          <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="{% url 'photo' inquiry.quilt_id %}">
+                            <i class="fa fa-eye"></i>
+                          </a>
+                        </li>
+
+                        <li class="list-inline-item">
+                          <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="">
+                            <i class="fa fa-trash"></i>
+                          </a>
+                        </li>
+                      </ul>
                     </div>
-                    <div class="modal-body">
-                      <form action="{% url 'send_reply' %}" method="POST">
-                        {% csrf_token%}
-                        <div class="form-group">
-                          <label for="property_name" class="col-form-label">Item:</label>
-                          <input type="text" name="quilt_title" class="form-control" value="{{inquiry.quilt_title}}" readonly>
-                        </div>
-                        <div class="form-group">
-                          <label for="name" class="col-form-label">Name:</label>
-                          <input type="text" name="name" class="form-control" value="{{inquiry.first_name}} {{inquiry.last_name}}" readonly>
-                        </div>
-                        <div class="form-group">
-                          <label for="email" class="col-form-label">Email:</label>
-                          <input type="email" name="email" class="form-control" value="{{inquiry.email}}" readonly>
-                        </div>
-                        <div class="form-group">
-                          <label for="message" class="col-form-label">Message:</label>
-                          <textarea name="message" class="form-control" required></textarea>
-                        </div>
-                        <hr>
-                       <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                  </td>
+                </tr>
 
-                    </form>
                     </div>
                   </div>
                 </div>
-              </div>
-              {% endfor %}
-            </tbody>
+                {% endfor %}
+              </tbody>
           </table>
           {% else %}
             <h4>You have no products added</h4>
@@ -162,23 +92,44 @@
         <!-- pagination -->
         <div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
+          {% if myinquiries.has_other_pages %}
 						<ul class="pagination">
+            {% if myinquiries.has_previous %}
 							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
+								<a class="page-link" href="?page={{myinquiries.previous_page_number}}" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
+            {% else %}
+							<li class="page-item disabled">
+								<a class="page-link" aria-label="Previous">
+								</a>
+							</li>
+						{% endif %}
+            {% for i in myinquiries.paginator.page_range %}
+              {% if myinquiries == i %}
+							  <li class="page-item active"><a class="page-link active" href="#">{{i}}</a></li>
+              {% else %}
+							  <li class="page-item "><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+              {% endif %}
+            {% endfor %}
+
+            {% if myinquiries.has_next %}
 							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
+								<a class="page-link" href="?page={{myinquiries.next_page_number}}" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 									<span class="sr-only">Next</span>
 								</a>
 							</li>
+            {% else %}
+							<li class="page-item disabled">
+								<a class="page-link" aria-label="Next">
+								</a>
+							</li>
+						{% endif %}
 						</ul>
+          {% endif %}
 					</nav>
 				</div>
         <!-- pagination -->
