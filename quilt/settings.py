@@ -26,7 +26,7 @@ SECRET_KEY = '%#fhtgfhy$xlvde1vxi2@26k=@ph7$i&$8%)54stj*xijq49nt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['floating-dusk-45040.herokuapp.com', 'hanaaquilt.sewemall.com']
+ALLOWED_HOSTS = ['seweproject.herokuapp.com', 'hanaaquilt.sewemall.com']
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vendor_admin'
