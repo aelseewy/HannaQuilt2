@@ -49,7 +49,7 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if product.image %}
-							<div class="product-slider-item my-4" data-image="{{product.get_thumbnail}}">
+							<div class="product-slider-item my-4" data-image="{{product.image_one.url}}">
 								<img class="img-fluid w-100" src="{{product.image.url}}" alt="product-img">
 							</div>
 						{% endif %}

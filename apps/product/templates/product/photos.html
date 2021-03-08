@@ -56,7 +56,7 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if photo.image %}
-							<div class="product-slider-item my-4" data-image="{{photo.get_thumbnail}}">
+							<div class="product-slider-item my-4" data-image="{{photo.image_one.url}}">
 								<img class="img-fluid w-100" src="{{photo.image.url}}" alt="product-img">
 							</div>
 						{% endif %}
@@ -183,9 +183,9 @@
 													<select name="stars" id="stars" class="form-control" >
 														<option value="1">1</option>
                                     					<option value="2">2</option>
-                                    					<option value="3" selected>3</option>
+                                    					<option value="3">3</option>
                                     					<option value="4">4</option>
-                                    					<option value="5">5</option>
+                                    					<option value="5" selected>5</option>
                                 					</select>
 
 												</div>

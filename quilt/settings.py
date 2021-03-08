@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%#fhtgfhy$xlvde1vxi2@26k=@ph7$i&$8%)54stj*xijq49nt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['seweproject.herokuapp.com', 'hanaaquilt.sewemall.com']
+ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vendor_admin'
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.vendor',
     'apps.product',
     'apps.contact',
+    'widget_tweaks',
 
 ]
 
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'quilt.urls'
@@ -84,17 +85,17 @@ WSGI_APPLICATION = 'quilt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'quilt_db',
-#        'USER': 'postgres',
-#        'PASSWORD': 'Salamat',
-#        'HOST': 'localhost',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'quilt_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Salamat',
+        'HOST': 'localhost',
+    }
+}
 
-DATABASES = {'default': dj_database_url.config(default='postgres://postgres:Salamat@localhost/quilt_db')}
+#DATABASES = {'default': dj_database_url.config(default='postgres://postgres:Salamat@localhost/quilt_db')}
 
 
 # Password validation
@@ -159,5 +160,3 @@ EMAIL_HOST_USER = 'quiltinegypt@gmail.com'
 EMAIL_HOST_PASSWORD = 'zzcucrhusiwnufhw'
 EMAIL_USE_TLS = True
 
-# Whitenoise settings
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

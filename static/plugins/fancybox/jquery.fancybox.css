@@ -90,11 +90,7 @@
 	z-index: 8060;
 }
 
-#fancybox-loading div {
-	width: 44px;
-	height: 44px;
-	background: url('../images/fancybox_loading.gif') center center no-repeat;
-}
+
 
 .fancybox-close {
 	position: absolute;
