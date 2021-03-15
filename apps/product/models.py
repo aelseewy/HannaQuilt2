@@ -15,6 +15,9 @@ class Category(models.Model):
     ## for product category
     title = models.CharField(max_length=50)
     #image = models.ImageField(upload_to='uploads/', , blank=True , null=True)
+    is_active = models.BooleanField(default=True)
+    is_selected = models.BooleanField(default=True)
+
     ordering = models.IntegerField(default=0)
 
     slug = models.SlugField(blank=True  , null=True)

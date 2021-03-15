@@ -49,7 +49,7 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if product.image %}
-							<div class="product-slider-item my-4" data-image="{{product.image_one.url}}">
+							<div class="product-slider-item my-4" data-image="{{product.image.url}}">
 								<img class="img-fluid w-100" src="{{product.image.url}}" alt="product-img">
 							</div>
 						{% endif %}
@@ -58,11 +58,6 @@
 								<img class="d-block img-fluid w-100" src="{{product.image_two.url}}" alt="Second slide">
 							</div>
 						{% endif %}
-						{% if product.image_two %}
-							<div class="product-slider-item my-4" data-image="{{product.image_two.url}}">
-								<img class="d-block img-fluid w-100" src="{{product.image_two.url}}" alt="Third slide">
-							</div>
-						{% endif %}
 						{% if product.image_three %}
 							<div class="product-slider-item my-4" data-image="{{product.image_three.url}}">
 								<img class="d-block img-fluid w-100" src="{{product.image_three.url}}" alt="Third slide">
@@ -71,6 +66,11 @@
 						{% if product.image_three %}
 							<div class="product-slider-item my-4" data-image="{{product.image_three.url}}">
 								<img class="d-block img-fluid w-100" src="{{product.image_three.url}}" alt="Third slide">
+							</div>
+						{% endif %}
+						{% if product.image %}
+							<div class="product-slider-item my-4" data-image="{{product.image.url}}">
+								<img class="d-block img-fluid w-100" src="{{product.image.url}}" alt="Third slide">
 							</div>
 						{% endif %}
 					</div>

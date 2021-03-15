@@ -6,14 +6,17 @@ from django.contrib import messages
 
 # Create your views here.
 def frontpage(request):
-    newest_products = Product.objects.all()[0:10]
-    all_categories = Category.objects.all()
+    newest_products = Product.objects.all()[0:7]
+    all_categores = Category.objects.filter(is_selected=True)
+    
+    all_categories = Category.objects.filter(is_active=True)
 
     template = 'core/frontpage.html'
 
     context = {
         'newest_products' : newest_products,
         'all_categories': all_categories,
+        'all_categores' : all_categores,
     }
 
     return render(request, template, context)

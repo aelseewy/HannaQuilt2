@@ -10,12 +10,11 @@
 				<div class="advance-search">
 					<form method="get" action="{% url 'search' %}">
 						<div class="form-row">
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-4" align="center">
 								<input type="text" class="form-control my-2 my-lg-0" name="query" id="inputtext4" placeholder="What are you looking for">
 							</div>
-
 							<div class="form-group col-md-2">
-								
+
 								<button type="submit" class="btn btn-primary">Search Now</button>
 							</div>
 						</div>
@@ -55,7 +54,7 @@
                                         <div class="thumb-content">
                                             <!-- <div class="price">$200</div> -->
                                             <a href="{% url 'photo' photo.id %}">
-                                                <img class="card-img-top img-fluid" src="{{photo.thumbnail.url}}" alt="Card image cap" style="min-height: 262px; max-height: 262px;">
+                                                <img class="card-img-top img-fluid" src="{{photo.image.url}}" alt="Card image cap" style="min-height: 262px; max-height: 262px;">
                                             </a>
                                         </div>
                                         <div class="card-body">
