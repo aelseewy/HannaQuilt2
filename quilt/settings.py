@@ -89,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'quilt_db',
-        'USER': 'postgres',
+        'USER': 'postgress',
         'PASSWORD': 'Salamat',
         'HOST': 'localhost',
     }
