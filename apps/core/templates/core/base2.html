@@ -28,7 +28,12 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=2892710120976873&autoLogAppEvents=1" nonce="R7qUWPMW"></script>
-
+  <script>
+   function myFunction() {
+   var x = document.URL;
+   document.getElementById("quilt").src = 'https://www.facebook.com/plugins/share_button.php?href='+x+'&layout=button_count&size=large&mobile_iframe=true&width=83&height=28&appId';
+  }
+  </script>
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,7 +45,7 @@
 
 </head>
 
-<body class="body-wrapper">
+<body class="body-wrapper" onload="myFunction()">
 
 {% include 'includes/navbar2.html' %}
     
