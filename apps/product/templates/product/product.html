@@ -208,7 +208,7 @@
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
-						<img class="rounded-circle img-fluid mb-5 px-5" src="{% static 'images/user/user-thumb.jpg' %}" alt="">
+						<img class="rounded-circle img-fluid mb-5 px-5" src="{% static 'images/user/userlogo.png' %}" alt="">
 						<h4><a href="">{{product.vendor.name}}</a></h4>
 						<p class="member-time">{{product.vendor.created_at}}</p>
 						<a href="{% url 'vendor_admin' %}">See all ads</a>
@@ -224,7 +224,7 @@
 					<!-- Rate Widget -->
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
-						<div class="fb-like" data-href="http://127.0.0.1:8000/photo/{{photo.id}}/" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+						<iframe id="quilt" src="" width="83" height="28" style="border:none;overflow:hidden" scrolling="no"  frameborder="0" allowTransparency="true"></iframe>
 					</div>
 					<!-- Coupon Widget -->
 					<div class="widget coupon text-center">

@@ -26,7 +26,7 @@ SECRET_KEY = '%#fhtgfhy$xlvde1vxi2@26k=@ph7$i&$8%)54stj*xijq49nt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hanaaquilt.sewemall.com']
+ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vendor_admin'
@@ -89,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'quilt_db',
-        'USER': 'postgress',
+        'USER': 'postgres',
         'PASSWORD': 'Salamat',
         'HOST': 'localhost',
     }
