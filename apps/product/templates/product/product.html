@@ -99,7 +99,7 @@
 								<iframe width="100%" height="400" src="https://www.youtube.com/watch?v=6W-JR0yFyX4"
 								 frameborder="0" allowfullscreen></iframe>
 								
-								<p><div class="fb-comments" data-href="http://127.0.0.1:8000/photo/{{photo.id}}" data-width="" data-numposts="4"></div></p>
+								<p><div class="fb-comments" data-href="http://hanaaquilt.sewemall.com/photo/{{photo.id}}" data-width="" data-numposts="4"></div></p>
 								
 								
 
@@ -110,7 +110,7 @@
 									<tbody>
 										<tr>
 											<td>Seller Price</td>
-											<td>${{product.price}}</td>
+											<td>L.E{{product.price}}</td>
 										</tr>
 										<tr>
 											<td>Added</td>
@@ -204,7 +204,7 @@
 				<div class="sidebar">
 					<div class="widget price text-center">
 						<h4>Price</h4>
-						<p>{{product.price }}</p>
+						<p> L.E {{product.price }}</p>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
@@ -224,17 +224,9 @@
 					<!-- Rate Widget -->
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
-						<div class="fb-like" data-href="http://127.0.0.1:8000/photo/{{photo.id}}/" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
+						<iframe id="quilt" src="" width="83" height="28" style="border:none;overflow:hidden" scrolling="no"  frameborder="0" allowTransparency="true"></iframe>
 					</div>
 					<!-- Coupon Widget -->
-					<div class="widget coupon text-center">
-						<!-- Coupon description -->
-						<p>Have a great product to post ? Share it with
-							your fellow users.
-						</p>
-						<!-- Submii button -->
-						<a href="{% url 'add_product' %}" class="btn btn-transparent-white">Submit Listing</a>
-					</div>
 
 				</div>
 			</div>

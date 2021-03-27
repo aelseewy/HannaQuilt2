@@ -50,7 +50,7 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						{% if photo.image %}
-							<div class="product-slider-item my-4" data-image="{{photo.image_one.url}}">
+							<div class="product-slider-item my-4" data-image="{{photo.image.url}}">
 								<img class="img-fluid w-100" src="{{photo.image.url}}" alt="product-img">
 							</div>
 						{% endif %}
@@ -97,9 +97,12 @@
 								<h3 class="tab-title">Product Description</h3>
 								<p>{{photo.brief_description}}</p>
 
-								<iframe width="100%" height="400" src="#"
-								 frameborder="0" allowfullscreen></iframe>
-								<p><div class="fb-comments" data-href="http://127.0.0.1:8000/photo/{{photo.id}}" data-width="" data-numposts="4"></div></p>
+								
+								<iframe id="ytplayer" type="text/html" width="720" height="405"
+                                                                src="https://www.youtube.com/embed/r3YcQAB8imk"
+                                                                frameborder="0" allowfullscreen> </iframe>
+							
+                                    	                        <p><div class="fb-comments" data-href="http://hanaaquilt.sewemall.com/photo/{{photo.id}}" data-width="" data-numposts="4"></div></p>
 
 							</div>
 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -108,7 +111,7 @@
 									<tbody>
 										<tr>
 											<td>Seller Price</td>
-											<td>${{photo.price}}</td>
+											<td>L.E {{photo.price}}</td>
 										</tr>
 										<tr>
 											<td>Added</td>
@@ -202,7 +205,7 @@
 				<div class="sidebar">
 					<div class="widget price text-center">
 						<h4>Price</h4>
-						<p>{{photo.price }}</p>
+						<p> L.E. {{photo.price }}</p>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
@@ -221,16 +224,9 @@
 					<!-- Safety tips widget -->
 					<div class="widget disclaimer">
 						<iframe id="quilt" src="" width="83" height="28" style="border:none;overflow:hidden" scrolling="no"  frameborder="0" allowTransparency="true"></iframe>
+                                                <a href="whatsapp://send?text=http://hanaaquilt.sewemall.com/" data-action="share/whatsapp/share">Share in Whatsapp</a>
 					</div>
 					<!-- Coupon Widget -->
-					<div class="widget coupon text-center">
-						<!-- Coupon description -->
-						<p>Have a great product to post ? Share it with
-							your fellow users.
-						</p>
-						<!-- Submii button -->
-						<a href="{% url 'add_product' %}" class="btn btn-transparent-white">Submit Listing</a>
-					</div>
 
 				</div>
 			</div>
